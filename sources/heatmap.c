@@ -6,7 +6,7 @@
 /*   By: gficara <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 13:26:12 by gficara           #+#    #+#             */
-/*   Updated: 2018/02/19 19:20:29 by gficara          ###   ########.fr       */
+/*   Updated: 2018/02/22 11:25:25 by gficara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,25 @@ void	modmap(t_data *data, char let)
 				}
 			}
 		pnt[1] = -1;
+	}
+}
+
+void	colre(t_data *data)
+{
+	int		coor[2];
+	int		col;
+
+	coor[0] = -1;
+	coor[1] = -1;
+	while (++coor[0] < data->size_b[0])
+	{
+		while (++coor[1] < data->size_b[1])
+			if (data->board[coor[0]][coor[1]] == data->player[0] - 32)
+			{
+				col = 0;
+				while (col < data->size_b[0])
+					data->heatmap[col++][coor[0]] += 200;
+			}
+		coor[1] = -1;
 	}
 }

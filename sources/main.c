@@ -6,7 +6,7 @@
 /*   By: gficara <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/05 17:25:27 by gficara           #+#    #+#             */
-/*   Updated: 2018/02/19 19:23:00 by gficara          ###   ########.fr       */
+/*   Updated: 2018/02/21 17:54:55 by gficara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,10 @@ void	putpiece(t_data data, char player)
 		ft_strdel(&line);
 	defboard(data.size_b, &data, 1);
 	if (first++ == 0)
+	{
+		colre(&data);
 		modmap(&data, data.player[1] - 32);
+	}
 	modmap(&data, data.player[1]);
 	get_next_line(data.fd, &line);
 	getdata(data.size_p, line);
@@ -124,6 +127,7 @@ int		main(void)
 		if (line)
 			ft_strdel(&line);
 	}
-	delbp(&data, 1);
+	if (data.size_b[0] != 0)
+		delbp(&data, 1);
 	return (0);
 }
